@@ -1,9 +1,6 @@
 target/
 exports/
 
-.agents/
-.codex/
-
 .idea/
 .vscode/
 *.iml
