@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: events-postgres
+    environment:
+      POSTGRES_DB: events_sql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  neo4j:
+    image: neo4j:5-community
+    container_name: events-neo4j
+    environment:
+      NEO4J_AUTH: neo4j/senha123
+    ports:
+      - "7475:7474"
+      - "7688:7687"
+    volumes:
+      - neo4j_data:/data
+
+  mongo:
+    image: mongodb/mongodb-community-server:7.0-ubuntu2204
+    container_name: events-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  postgres_data:
+  neo4j_data:
+  mongo_data:
